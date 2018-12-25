@@ -1,0 +1,388 @@
+{
+    "features": [
+        "Basic_meta",
+        "Basic_ts",
+        "TimeSeriesFeatures_cesium_common",
+        "TimeSeriesFeatures_cesium_cad",
+        "Basic_fluxfactor",
+        "Basic_fluxfactor_passband",
+        "DiffPeak",
+        "TimeSeriesFeatures_cesium_freq",
+        "TimeFromPeak",
+        "Basic_fluxdiff",
+        "Basic_fluxdiff_passband",
+        "Basic_maxpoint",
+        "Basic_maxpoint_passband"
+    ],
+    "cv": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "random_state": 71
+    },
+    "gal_model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "multiclass",
+            "num_class": -1,
+            "metric": "multi_logloss",
+            "learning_rate": 0.05,
+            "num_leaves": 100,
+            "max_depth": -1,
+            "subsample": 1.0,
+            "colsample_bytree": 0.6,
+            "reg_alpha": 5,
+            "reg_lambda": 10,
+            "min_split_gain": 0.5,
+            "min_child_weight": 10,
+            "n_estimators": 1000,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "random_state": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "early_stopping_rounds": 100,
+            "verbose": 100
+        }
+    },
+    "exgal_model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "multiclass",
+            "num_class": 9,
+            "metric": "multi_logloss",
+            "learning_rate": 0.05,
+            "num_leaves": 100,
+            "max_depth": -1,
+            "subsample": 1.0,
+            "colsample_bytree": 0.6,
+            "reg_alpha": 5,
+            "reg_lambda": 10,
+            "min_split_gain": 0.5,
+            "min_child_weight": 10,
+            "n_estimators": 1000,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "random_state": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "early_stopping_rounds": 100,
+            "verbose": 100
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "meta": {
+                "train": "training_set_metadata.csv",
+                "test": "test_set_metadata.csv"
+            },
+            "ts": {
+                "train": "training_set.csv",
+                "test_sample": "test_set_sample.csv",
+                "test": "test_set.csv"
+            }
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_36.json",
+        "debug_mode": false,
+        "select": false,
+        "drop": false,
+        "iter": true,
+        "out": "output_36"
+    },
+    "evals_result_gal": {
+        "oof_score": 0.1625097542176585,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "multi_logloss": 0.07139546944501422,
+                    "wloss": 0.07139546923921865
+                },
+                "valid": {
+                    "multi_logloss": 0.12696300934287713,
+                    "wloss": 0.19752808421010706
+                }
+            },
+            "cv2": {
+                "train": {
+                    "multi_logloss": 0.06866827373438751,
+                    "wloss": 0.06866827369630125
+                },
+                "valid": {
+                    "multi_logloss": 0.11132002764589218,
+                    "wloss": 0.1266516419140151
+                }
+            },
+            "cv3": {
+                "train": {
+                    "multi_logloss": 0.06772167073671215,
+                    "wloss": 0.06772167068963965
+                },
+                "valid": {
+                    "multi_logloss": 0.11622384550900099,
+                    "wloss": 0.14840620775865726
+                }
+            },
+            "cv4": {
+                "train": {
+                    "multi_logloss": 0.06935929168863902,
+                    "wloss": 0.06935929161584999
+                },
+                "valid": {
+                    "multi_logloss": 0.11281106011697475,
+                    "wloss": 0.1602530166168643
+                }
+            },
+            "cv5": {
+                "train": {
+                    "multi_logloss": 0.06842053604875614,
+                    "wloss": 0.06842053651316392
+                },
+                "valid": {
+                    "multi_logloss": 0.12886656710683386,
+                    "wloss": 0.1802297843419905
+                }
+            }
+        },
+        "best_iteration": 167.4,
+        "n_features": 60,
+        "feature_importance": {
+            "qso_log_chi2_qsonu_u": 150.6,
+            "diff_mjd_maxmin_detected1": 127.6,
+            "skew_r": 97.0,
+            "median_absolute_deviation_r": 93.0,
+            "flux_by_flux_ratio_sq_skew": 90.4,
+            "flux_median_maxpoint": 89.8,
+            "fluxdiff_min_detected1": 78.4,
+            "flux_skew": 76.2,
+            "median_absolute_deviation_g": 71.0,
+            "median_absolute_deviation_y": 63.6,
+            "flux_skew_maxpoint": 63.2,
+            "skew_i": 60.8,
+            "period_fast_y": 60.6,
+            "std_y": 58.4,
+            "flux_min_2_maxpoint": 54.8,
+            "fluxdiff_median_detected1": 54.6,
+            "skew_z": 54.0,
+            "__freq_varrat___5_": 53.4,
+            "flux_percentile_ratio_mid35_g": 52.8,
+            "skew_g": 52.2,
+            "flux_min_detected1": 52.0,
+            "__freq_varrat___2_": 51.4,
+            "period_fast_r": 50.0,
+            "period_fast_z": 49.6,
+            "amplitude_z": 49.2,
+            "stetson_j_y": 47.2,
+            "flux_skew_detected1": 47.2,
+            "percent_close_to_median_y": 46.6,
+            "flux_err_max_detected1": 45.8,
+            "percent_close_to_median_z": 45.6,
+            "period_fast_i": 44.2,
+            "percent_amplitude_r": 43.4,
+            "flux_by_flux_ratio_sq_skew_detected1_maxpoint": 40.6,
+            "percent_amplitude_g": 40.2,
+            "flux_err_std_detected1_maxpoint": 40.0,
+            "qso_log_chi2_qsonu_r": 39.4,
+            "stetson_k_y": 38.8,
+            "flux_percentile_ratio_mid20_g": 38.6,
+            "flux_median": 37.4,
+            "minimum_g": 37.2,
+            "stetson_k_z": 37.0,
+            "amplitude_u": 35.6,
+            "flux_err_std_detected1": 35.0,
+            "flux_percentile_ratio_mid50_g": 33.8,
+            "stetson_k_i": 33.6,
+            "flux_ratio_sq_sum_5_maxpoint": 33.6,
+            "maximum_r": 33.4,
+            "flux_err_skew_detected1_maxpoint": 29.2,
+            "peakpoint_pass4-pass5": 28.6,
+            "minimum_y": 27.4,
+            "qso_log_chi2_qsonu_y": 26.4,
+            "flux_mean_5_maxpoint": 25.2,
+            "flux_skew_detected1_maxpoint": 24.8,
+            "percent_beyond_1_std_r": 24.0,
+            "flux_ratio_sq_sum_0_maxpoint": 23.8,
+            "peakpoint_pass3-pass5": 23.6,
+            "percent_difference_flux_percentile_r": 22.8,
+            "percent_close_to_median_i": 18.2,
+            "skew_y": 17.6,
+            "__freq_varrat___4_": 16.6
+        }
+    },
+    "evals_result_exgal": {
+        "oof_score": 0.780326523958482,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "multi_logloss": 0.35610663395930375,
+                    "wloss": 0.3561066379630218
+                },
+                "valid": {
+                    "multi_logloss": 0.9649829070730059,
+                    "wloss": 0.7824737037099712
+                }
+            },
+            "cv2": {
+                "train": {
+                    "multi_logloss": 0.36882145709133557,
+                    "wloss": 0.3688214613404285
+                },
+                "valid": {
+                    "multi_logloss": 0.8968131196205217,
+                    "wloss": 0.6982291026596479
+                }
+            },
+            "cv3": {
+                "train": {
+                    "multi_logloss": 0.35733993977313344,
+                    "wloss": 0.3573399407922659
+                },
+                "valid": {
+                    "multi_logloss": 0.9809077732048119,
+                    "wloss": 0.8053149349289794
+                }
+            },
+            "cv4": {
+                "train": {
+                    "multi_logloss": 0.35926607317166237,
+                    "wloss": 0.3592660721305012
+                },
+                "valid": {
+                    "multi_logloss": 0.9658602766143553,
+                    "wloss": 0.8222699455906801
+                }
+            },
+            "cv5": {
+                "train": {
+                    "multi_logloss": 0.3556844920715765,
+                    "wloss": 0.3556844965922385
+                },
+                "valid": {
+                    "multi_logloss": 0.9648842655440675,
+                    "wloss": 0.7947906080033106
+                }
+            }
+        },
+        "best_iteration": 253.60000000000002,
+        "n_features": 100,
+        "feature_importance": {
+            "diff_mjd_maxmin_detected1": 685.6,
+            "flux_std_detected1_maxpoint": 282.2,
+            "flux_skew_maxpoint": 272.8,
+            "flux_median_fluxfactor": 271.0,
+            "median_absolute_deviation_g": 257.2,
+            "flux_mean_0_maxpoint": 254.2,
+            "stetson_k_g": 252.2,
+            "flux_w_mean_0_fluxfactor": 250.8,
+            "fluxdiff_min_2": 250.0,
+            "period_fast_z": 249.8,
+            "flux_w_mean_0_maxpoint": 245.8,
+            "flux_min_1_maxpoint": 242.4,
+            "median_r": 239.0,
+            "flux_dif2_4_fluxfactor": 233.2,
+            "flux_min_0_maxpoint": 233.2,
+            "period_fast_i": 232.8,
+            "flux_skew": 229.8,
+            "flux_w_mean_1_fluxfactor": 229.6,
+            "fluxdiff_median_detected1": 228.0,
+            "flux_w_mean_5_maxpoint": 227.2,
+            "period_fast_g": 227.2,
+            "flux_min_2_maxpoint": 224.6,
+            "time_from_peak_after_thres0.2_pass3": 223.4,
+            "mean_y": 221.2,
+            "flux_min_detected1_maxpoint": 216.4,
+            "period_fast_u": 215.8,
+            "stetson_k_r": 215.4,
+            "flux_w_mean_5_fluxfactor": 214.8,
+            "weighted_average_u": 212.2,
+            "hostgal_photoz_err": 211.6,
+            "flux_dif2_detected1_maxpoint": 210.4,
+            "period_fast_r": 210.2,
+            "time_from_peak_after_thres0.2_pass4": 210.0,
+            "fluxdiff_max_detected1": 209.0,
+            "fluxdiff_skew_detected1": 207.8,
+            "fluxdiff_std_detected1": 207.4,
+            "__freq_varrat___0_": 206.6,
+            "flux_dif3_detected1_maxpoint": 205.2,
+            "flux_w_mean_2_fluxfactor": 204.6,
+            "flux_dif2": 202.8,
+            "qso_log_chi2_qsonu_u": 202.2,
+            "flux_dif3_1_maxpoint": 199.6,
+            "flux_dif3": 199.4,
+            "__freq_varrat___4_": 198.4,
+            "peakpoint_pass3-pass5": 196.6,
+            "hostgal_photoz_certain": 196.2,
+            "flux_dif3_2_fluxfactor": 194.4,
+            "flux_mean_5_maxpoint": 193.4,
+            "weighted_average_g": 187.2,
+            "hostgal_photoz": 187.0,
+            "distmod": 186.8,
+            "flux_dif2_1_fluxfactor": 186.2,
+            "percent_close_to_median_r": 185.4,
+            "time_from_peak_after_thres0.3_pass2": 182.4,
+            "flux_dif2_2_maxpoint": 175.6,
+            "__freq_varrat___5_": 173.4,
+            "flux_by_flux_ratio_sq_skew_maxpoint": 170.8,
+            "flux_dif2_3_maxpoint": 169.6,
+            "flux_w_mean_detected1_fluxfactor": 169.4,
+            "__freq_varrat___1_": 168.6,
+            "flux_skew_detected1_maxpoint": 167.0,
+            "time_from_peak_after_thres0.3_pass4": 166.6,
+            "peakpoint_pass0-pass4": 164.6,
+            "flux_err_max_detected1_fluxfactor": 163.0,
+            "time_from_peak_after_thres0.3_pass3": 161.6,
+            "flux_dif2_3_fluxfactor": 160.2,
+            "flux_skew_detected1": 158.6,
+            "flux_dif2_5_maxpoint": 157.8,
+            "flux_ratio_sq_sum_0_fluxfactor": 157.4,
+            "peakpoint_pass1-pass4": 156.8,
+            "flux_by_flux_ratio_sq_sum_1_fluxfactor": 155.6,
+            "peakpoint_pass1-pass5": 154.6,
+            "fluxdiff_skew_2": 153.4,
+            "flux_dif2_4_maxpoint": 152.6,
+            "flux_diff_fluxfactor": 151.6,
+            "flux_mean_fluxfactor": 151.4,
+            "qso_log_chi2nuNULL_chi2nu_r": 150.4,
+            "flux_by_flux_ratio_sq_sum_0_fluxfactor": 148.6,
+            "mean_u": 148.4,
+            "flux_std_detected1_fluxfactor": 147.8,
+            "flux_err_min_fluxfactor": 145.0,
+            "peakpoint_pass2-pass5": 144.0,
+            "flux_w_mean_4_fluxfactor": 143.6,
+            "flux_dif3_maxpoint": 142.0,
+            "percent_amplitude_g": 140.2,
+            "median_g": 138.6,
+            "flux_max_detected1_fluxfactor": 136.4,
+            "peakpoint_pass2-pass4": 136.2,
+            "fluxdiff_min_detected1": 135.2,
+            "median_i": 135.0,
+            "flux_dif2_maxpoint": 134.2,
+            "time_from_peak_after_thres0.1_pass2": 134.0,
+            "time_from_peak_after_thres0.2_pass2": 133.8,
+            "fluxdiff_dif2_detected1": 133.0,
+            "period_fast_y": 131.0,
+            "flux_median_maxpoint": 118.4,
+            "flux_max_fluxfactor": 102.0,
+            "flux_mean_detected1_fluxfactor": 93.0,
+            "flux_w_mean_fluxfactor": 92.2,
+            "flux_std_fluxfactor": 90.0
+        }
+    },
+    "total_oof_score": 0.5873445648933235,
+    "pred_result": {
+        "class_99_mean": 0.14000000000001586,
+        "class_99_std": 0.05082041954410533
+    }
+}

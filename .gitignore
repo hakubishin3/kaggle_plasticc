@@ -1,0 +1,12 @@
+# data file
+*csv
+*gz
+*pkl
+*ftr
+*npz
+
+# python
+__pycache__/
+
+# jupyter notebook
+.ipynb_checkpoints

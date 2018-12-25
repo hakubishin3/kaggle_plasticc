@@ -1,0 +1,134 @@
+{
+    "features": [
+        "Basic_meta"
+    ],
+    "cv": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "random_state": 71
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "multiclass",
+            "num_class": 14,
+            "metric": "multi_logloss",
+            "learning_rate": 0.05,
+            "num_leaves": 100,
+            "max_depth": -1,
+            "subsample": 1.0,
+            "colsample_bytree": 0.6,
+            "reg_alpha": 5,
+            "reg_lambda": 10,
+            "min_split_gain": 0.5,
+            "min_child_weight": 10,
+            "n_estimators": 1000,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "random_state": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "early_stopping_rounds": 100,
+            "verbose": 100
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "meta": {
+                "train": "training_set_metadata.csv",
+                "test": "test_set_metadata.csv"
+            },
+            "ts": {
+                "train": "training_set.csv",
+                "test_sample": "test_set_sample.csv",
+                "test": "test_set.csv"
+            }
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_1.json",
+        "debug_mode": false,
+        "out": "output_1"
+    },
+    "evals_result": {
+        "oof_score": 2.078263391000725,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "multi_logloss": 1.3819674833402515,
+                    "wloss": 1.9308925213602728
+                },
+                "valid": {
+                    "multi_logloss": 1.4246798154058342,
+                    "wloss": 2.049541913978924
+                }
+            },
+            "cv2": {
+                "train": {
+                    "multi_logloss": 1.373250539910396,
+                    "wloss": 1.9352625428292092
+                },
+                "valid": {
+                    "multi_logloss": 1.4195665667495303,
+                    "wloss": 2.0260645867505658
+                }
+            },
+            "cv3": {
+                "train": {
+                    "multi_logloss": 1.4065550116627892,
+                    "wloss": 1.9300525609758468
+                },
+                "valid": {
+                    "multi_logloss": 1.5005498206254362,
+                    "wloss": 2.1564251898520217
+                }
+            },
+            "cv4": {
+                "train": {
+                    "multi_logloss": 1.425094329858596,
+                    "wloss": 1.9577230482683194
+                },
+                "valid": {
+                    "multi_logloss": 1.4697803480511369,
+                    "wloss": 2.076403222240508
+                }
+            },
+            "cv5": {
+                "train": {
+                    "multi_logloss": 1.3753300382259752,
+                    "wloss": 1.919780633069989
+                },
+                "valid": {
+                    "multi_logloss": 1.448524077629689,
+                    "wloss": 2.084618391847635
+                }
+            }
+        },
+        "best_iteration": 134.0,
+        "n_features": 10,
+        "feature_importance": {
+            "hostgal_photoz": 2032.6,
+            "hostgal_photoz_err": 1334.2,
+            "distmod": 1280.2,
+            "mwebv": 782.4,
+            "gal_l": 546.4,
+            "decl": 541.6,
+            "gal_b": 524.8,
+            "ra": 364.4,
+            "ddf": 254.6,
+            "external": 49.2
+        }
+    },
+    "pred_result": {
+        "class_99_mean": 0.14000000000000432,
+        "class_99_std": 0.007677367036239068
+    }
+}

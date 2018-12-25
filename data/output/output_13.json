@@ -1,0 +1,180 @@
+{
+    "features": [
+        "Basic_meta",
+        "Basic_ts",
+        "Predictor_specz"
+    ],
+    "cv": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "random_state": 71
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "multiclass",
+            "num_class": 14,
+            "metric": "multi_logloss",
+            "learning_rate": 0.05,
+            "num_leaves": 100,
+            "max_depth": -1,
+            "subsample": 1.0,
+            "colsample_bytree": 0.6,
+            "reg_alpha": 5,
+            "reg_lambda": 10,
+            "min_split_gain": 0.5,
+            "min_child_weight": 10,
+            "n_estimators": 1000,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "random_state": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "early_stopping_rounds": 100,
+            "verbose": 100
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "meta": {
+                "train": "training_set_metadata.csv",
+                "test": "test_set_metadata.csv"
+            },
+            "ts": {
+                "train": "training_set.csv",
+                "test_sample": "test_set_sample.csv",
+                "test": "test_set.csv"
+            }
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_13.json",
+        "debug_mode": false,
+        "iter": false,
+        "out": "output_13"
+    },
+    "evals_result": {
+        "oof_score": 0.7763578305245548,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "multi_logloss": 0.43836777880149264,
+                    "wloss": 0.4383677796160419
+                },
+                "valid": {
+                    "multi_logloss": 0.9517766828699551,
+                    "wloss": 0.8807481266288086
+                }
+            },
+            "cv2": {
+                "train": {
+                    "multi_logloss": 0.4459538613869698,
+                    "wloss": 0.4459538545284969
+                },
+                "valid": {
+                    "multi_logloss": 0.9195143554392453,
+                    "wloss": 0.7113134351629021
+                }
+            },
+            "cv3": {
+                "train": {
+                    "multi_logloss": 0.445825277083408,
+                    "wloss": 0.44582528087674916
+                },
+                "valid": {
+                    "multi_logloss": 0.9488353824113372,
+                    "wloss": 0.7406541874210312
+                }
+            },
+            "cv4": {
+                "train": {
+                    "multi_logloss": 0.44060651393349476,
+                    "wloss": 0.44060651255169675
+                },
+                "valid": {
+                    "multi_logloss": 0.9467514010845737,
+                    "wloss": 0.7971496553824525
+                }
+            },
+            "cv5": {
+                "train": {
+                    "multi_logloss": 0.44511761504026687,
+                    "wloss": 0.44511760954839064
+                },
+                "valid": {
+                    "multi_logloss": 0.9378265796434685,
+                    "wloss": 0.751348490597715
+                }
+            }
+        },
+        "best_iteration": 269.0,
+        "n_features": 53,
+        "feature_importance": {
+            "predict_specz": 1904.0,
+            "diff_mjd_maxmin_detected1": 1659.8,
+            "hostgal_photoz": 1029.0,
+            "flux_skew": 985.0,
+            "flux_median": 796.8,
+            "flux_dif2": 794.8,
+            "flux_min_detected1": 776.0,
+            "flux_skew_detected1": 725.2,
+            "flux_by_flux_ratio_sq_skew": 631.4,
+            "flux_err_min": 629.2,
+            "hostgal_photoz_err": 625.0,
+            "flux_dif3_detected1": 597.6,
+            "distmod": 558.8,
+            "detected_mean": 510.0,
+            "flux_dif3": 454.6,
+            "flux_ratio_sq_skew": 451.8,
+            "flux_err_skew_detected1": 414.0,
+            "flux_std_detected1": 404.4,
+            "flux_mean": 392.8,
+            "flux_dif2_detected1": 337.2,
+            "flux_err_min_detected1": 337.0,
+            "flux_by_flux_ratio_sq_skew_detected1": 322.4,
+            "flux_err_mean_detected1": 314.0,
+            "flux_err_max_detected1": 308.8,
+            "flux_ratio_sq_skew_detected1": 300.8,
+            "flux_min": 276.2,
+            "flux_err_std_detected1": 273.8,
+            "flux_err_max": 252.4,
+            "flux_median_detected1": 240.2,
+            "flux_err_median_detected1": 238.6,
+            "flux_w_mean_detected1": 236.4,
+            "flux_err_median": 214.8,
+            "flux_err_skew": 210.8,
+            "flux_max": 205.4,
+            "flux_w_mean": 204.6,
+            "flux_mean_detected1": 199.2,
+            "flux_max_detected1": 196.8,
+            "gal_b": 196.8,
+            "flux_ratio_sq_sum": 190.4,
+            "flux_err_std": 182.6,
+            "flux_err_mean": 176.4,
+            "flux_diff": 161.8,
+            "decl": 157.8,
+            "flux_by_flux_ratio_sq_sum": 152.6,
+            "gal_l": 150.4,
+            "flux_ratio_sq_sum_detected1": 143.2,
+            "mwebv": 139.2,
+            "flux_diff_detected1": 138.4,
+            "flux_std": 128.0,
+            "flux_by_flux_ratio_sq_sum_detected1": 124.2,
+            "ra": 118.2,
+            "external": 30.2,
+            "ddf": 5.4
+        }
+    },
+    "pred_result": {
+        "class_99_mean": 0.13999999999999238,
+        "class_99_std": 0.04337267837797225
+    }
+}

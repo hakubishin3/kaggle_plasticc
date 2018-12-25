@@ -1,0 +1,156 @@
+{
+    "features": [
+        "Basic_meta",
+        "Basic_ts"
+    ],
+    "cv": {
+        "method": "StratifiedKFold",
+        "n_splits": 5,
+        "random_state": 71
+    },
+    "model": {
+        "name": "lightgbm",
+        "model_params": {
+            "boosting_type": "gbdt",
+            "objective": "multiclass",
+            "num_class": 14,
+            "metric": "multi_logloss",
+            "learning_rate": 0.05,
+            "num_leaves": 100,
+            "max_depth": -1,
+            "subsample": 1.0,
+            "colsample_bytree": 0.6,
+            "reg_alpha": 5,
+            "reg_lambda": 10,
+            "min_split_gain": 0.5,
+            "min_child_weight": 10,
+            "n_estimators": 1000,
+            "seed": 71,
+            "bagging_seed": 71,
+            "feature_fraction_seed": 71,
+            "drop_seed": 71,
+            "random_state": 71,
+            "verbose": -1
+        },
+        "train_params": {
+            "early_stopping_rounds": 100,
+            "verbose": 100
+        }
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "meta": {
+                "train": "training_set_metadata.csv",
+                "test": "test_set_metadata.csv"
+            },
+            "ts": {
+                "train": "training_set.csv",
+                "test_sample": "test_set_sample.csv",
+                "test": "test_set.csv"
+            }
+        }
+    },
+    "args": {
+        "config": "configs/lightgbm_2.json",
+        "debug_mode": false,
+        "out": "output_2"
+    },
+    "evals_result": {
+        "oof_score": 1.2337286371750107,
+        "cv_score": {
+            "cv1": {
+                "train": {
+                    "multi_logloss": 0.6978032781531578,
+                    "wloss": 0.9075547616789967
+                },
+                "valid": {
+                    "multi_logloss": 0.8781377360304721,
+                    "wloss": 1.3097672430550173
+                }
+            },
+            "cv2": {
+                "train": {
+                    "multi_logloss": 0.7065669153857128,
+                    "wloss": 0.9284247298170043
+                },
+                "valid": {
+                    "multi_logloss": 0.859275056597465,
+                    "wloss": 1.1682834595029188
+                }
+            },
+            "cv3": {
+                "train": {
+                    "multi_logloss": 0.6971131939166082,
+                    "wloss": 0.9185502855326875
+                },
+                "valid": {
+                    "multi_logloss": 0.9022294115465951,
+                    "wloss": 1.2267556082164375
+                }
+            },
+            "cv4": {
+                "train": {
+                    "multi_logloss": 0.6931412299551566,
+                    "wloss": 0.9043441784357432
+                },
+                "valid": {
+                    "multi_logloss": 0.8816670314675642,
+                    "wloss": 1.2318425002350832
+                }
+            },
+            "cv5": {
+                "train": {
+                    "multi_logloss": 0.7020931485710195,
+                    "wloss": 0.9202969508171536
+                },
+                "valid": {
+                    "multi_logloss": 0.887318997393215,
+                    "wloss": 1.230552196387421
+                }
+            }
+        },
+        "best_iteration": 253.59999999999997,
+        "n_features": 31,
+        "feature_importance": {
+            "hostgal_photoz": 2200.8,
+            "flux_median": 1874.0,
+            "flux_dif2": 1690.0,
+            "detected_mean": 1529.4,
+            "distmod": 1300.2,
+            "hostgal_photoz_err": 1146.0,
+            "flux_dif3": 1102.6,
+            "flux_err_min": 1057.2,
+            "flux_w_mean": 952.6,
+            "flux_max": 758.0,
+            "flux_min": 709.8,
+            "flux_mean": 634.2,
+            "flux_std": 513.6,
+            "flux_by_flux_ratio_sq_sum": 482.2,
+            "flux_ratio_sq_sum": 446.2,
+            "flux_err_max": 431.2,
+            "flux_diff": 430.8,
+            "flux_err_std": 423.0,
+            "flux_err_median": 405.0,
+            "decl": 372.2,
+            "flux_err_mean": 349.2,
+            "mjd_diff": 342.8,
+            "mjd_max": 306.8,
+            "mjd_size": 249.6,
+            "gal_b": 244.4,
+            "mwebv": 226.4,
+            "gal_l": 208.4,
+            "mjd_min": 140.4,
+            "ra": 109.4,
+            "external": 41.4,
+            "ddf": 2.4
+        }
+    },
+    "pred_result": {
+        "class_99_mean": 0.139999999999993,
+        "class_99_std": 0.040554463510574186
+    }
+}
