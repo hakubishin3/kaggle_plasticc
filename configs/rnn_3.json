@@ -1,0 +1,48 @@
+{
+    "model": {
+        "num_layers": 2,
+        "bidirectional": true,
+        "n_hidden": 56,
+        "drop_frac": 0.2,
+        "n_out": 16,
+        "lr": 0.01,
+        "batch_size": 256,
+        "epochs": 100,
+        "early_stopping_patience": 10,
+        "n_class": 14,
+        "l_hidden": 360
+    },
+    "dataset": {
+        "input_directory": "data/input/",
+        "intermediate_directory": "data/interim/",
+        "feature_directory": "data/feature/",
+        "output_directory": "data/output/",
+        "files": {
+            "meta":{
+                "train": "training_set_metadata.csv",
+                "test": "test_set_metadata.csv"
+            },
+            "ts":{
+                "train": "training_set.csv",
+                "test": {
+                    "gal": {
+                        "passband0": "test_set_gal_passband0.ftr",
+                        "passband1": "test_set_gal_passband1.ftr",
+                        "passband2": "test_set_gal_passband2.ftr",
+                        "passband3": "test_set_gal_passband3.ftr",
+                        "passband4": "test_set_gal_passband4.ftr",
+                        "passband5": "test_set_gal_passband5.ftr"
+                    },
+                    "exgal": {
+                        "passband0": "test_set_exgal_passband0.ftr",
+                        "passband1": "test_set_exgal_passband1.ftr",
+                        "passband2": "test_set_exgal_passband2.ftr",
+                        "passband3": "test_set_exgal_passband3.ftr",
+                        "passband4": "test_set_exgal_passband4.ftr",
+                        "passband5": "test_set_exgal_passband5.ftr"
+                    }
+                }
+            }
+        }
+    }
+}
