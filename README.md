@@ -1,3 +1,3 @@
 # kaggle_plasticc
 
-I made lightgbm model and RNN.
+I made lightgbm and RNN models.
