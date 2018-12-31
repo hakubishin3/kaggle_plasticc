@@ -29,7 +29,7 @@ https://www.kaggle.com/c/PLAsTiCC-2018/discussion/75222
 
 - CNN
   - https://www.kaggle.com/yuval6967/3rd-place-cnn
-  - s1d-cnnを用いたネットワーク構成。次の資料の構成に似ている。https://arxiv.org/pdf/1611.06455.pdf
+  - 1d-cnnを用いたネットワーク構成。次の資料の構成に似ている。https://arxiv.org/pdf/1611.06455.pdf
   - cnnの最終層出力とmeta-data用のMLP出力をconcat。
   - 各チャンネルのlight-curveを線形補間
   - 補間した値の信頼度を追加（補間時点と最も近いデータ点との距離を信頼度として与える）
