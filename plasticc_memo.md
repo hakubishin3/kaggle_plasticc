@@ -23,7 +23,8 @@ https://www.kaggle.com/c/PLAsTiCC-2018/discussion/75222
   - curve angle - np.arctan(flux_diff/mjd_diff) が効いた。
 
 - lightgbm
-  - sncosmoパッケージを使ったtemplate fitting。https://www.kaggle.com/nyanpn/salt-2-feature-part-of-3rd-place-solution
+  - https://www.kaggle.com/nyanpn/salt-2-feature-part-of-3rd-place-solution
+  - sncosmoパッケージを使ったtemplate fitting。
   - 計算がsegmentation errorを吐く場合があったので、object_id%30でデータを分割し、30インスタンスで並列計算。
   - 様々なtemplateを使用して（salt-2, salt-2-extended, sako, ...）、そのうち8つを最終的に採用。
 
